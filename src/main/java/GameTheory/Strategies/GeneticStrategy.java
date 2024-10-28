@@ -1,41 +1,60 @@
-// package GameTheory.Strategies;
+package GameTheory.Strategies;
 
-// import java.util.Random;
+import java.util.Random;
 
-// public abstract class GeneticStrategy extends Strategy {
+/**
+ * Abstract class implementing genetic algorithm functionality
+ * Extends base Strategy class for tournament play
+ */
+public abstract class GeneticStrategy extends Strategy {
+    // Weight determines probability of strategy choices
+    protected double weight;
+    // Random number generator for mutations
+    protected Random generator;
 
-// /**
-// * This class is a genetic algorithm that acts on no knowledge of previous
-// * moves.
-// */
+    /**
+     * Constructor initializes genetic strategy
+     * 
+     * @param n      Initial weight value
+     * @param player Player enum value (PLAYER1 or PLAYER2)
+     */
+    GeneticStrategy(double n, Player player) {
+        super(player); // Initialize base Strategy class
+        weight = n;
+        generator = new Random();
+    }
 
-// protected double weight;
-// protected Random generator;
+    /**
+     * Mutates the current strategy's weight
+     * Uses small random adjustments bounded by 0 and 1
+     */
+    public void mutate() {
+        boolean pm = generator.nextDouble() > 0.5;
+        double val = generator.nextDouble() * 0.004;
+        weight = pm && weight + val < 1 ? weight + val : weight - val > 0 ? weight - val : weight;
+    }
 
-// GeneticStrategy(double n) {
-// weight = n;
-// generator = new Random();
-// }
+    /**
+     * Creates new mutated instance of strategy
+     * 
+     * @return New GeneticStrategy with mutated values
+     */
+    public abstract GeneticStrategy mutateNew();
 
-// /**
-// * Mutate this genetic strategy by modifying it's weight
-// */
-// public void mutate() {
-// boolean pm = generator.nextDouble() > 0.5;
-// double val = generator.nextDouble() * 0.004;
-// weight = pm && weight + val < 1 ? weight + val : weight - val > 0 ? weight -
-// val : weight;
-// }
+    /**
+     * Gets current weight value
+     * 
+     * @return Current strategy weight
+     */
+    public double getWeight() {
+        return this.weight;
+    }
 
-// /**
-// * Mutate this genetic strategy
-// */
-// public abstract GeneticStrategy mutateNew();
-
-// /**
-// * Return the weight of the GeneticStrategy
-// */
-// public double getWeight() {
-// return this.weight;
-// }
-// }
+    /**
+     * Required implementation from Strategy class
+     * 
+     * @return Integer representing chosen strategy
+     */
+    @Override
+    public abstract int getStrategy();
+}

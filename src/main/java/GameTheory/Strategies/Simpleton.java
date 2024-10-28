@@ -1,34 +1,51 @@
-// package GameTheory.Strategies;
+package GameTheory.Strategies;
 
-// public class Simpleton extends Strategy {
+/**
+ * Simpleton strategy - A simple strategy that changes behavior based on
+ * opponent's last move
+ * If opponent cooperated, repeat previous move
+ * If opponent defected, change previous move
+ */
+public class Simpleton extends Strategy {
 
-// /**
-// * Strategy from the great Evolution of Trust (https://ncase.me/trust/)
-// *
-// * If the opposite cooperates, I will copy my last move. If the opponent
-// * defects, I do the opposite of my last move.
-// */
+    private boolean lastMove = true; // Start with cooperation
 
-// private boolean prevMove;
+    /**
+     * Original: Basic constructor
+     * Updated: Added Player parameter for new contest structure
+     */
+    public Simpleton(Player player) {
+        super(player);
+    }
 
-// public Simpleton() {
-// super();
-// }
+    /**
+     * Original: Used boolean makeMove()
+     * Updated: Now uses int getStrategy() for contest compatibility
+     * Returns 1 (cooperate) or 0 (defect) based on:
+     * - First move: cooperate
+     * - If opponent cooperated: repeat last move
+     * - If opponent defected: switch move
+     */
+    @Override
+    public int getStrategy() {
+        if (opponentMoveHistory.isEmpty()) {
+            lastMove = true;
+            return 1;
+        }
 
-// @Override
-// public boolean makeMove() {
-// boolean move;
+        boolean opponentLastMove = opponentMoveHistory.get(opponentMoveHistory.size() - 1);
+        if (opponentLastMove) {
+            // Keep same move if opponent cooperated
+            return lastMove ? 1 : 0;
+        } else {
+            // Switch move if opponent defected
+            lastMove = !lastMove;
+            return lastMove ? 1 : 0;
+        }
+    }
 
-// if (opponentMoveHistory.size() == 0) {
-// move = true;
-// } else if (opponentMoveHistory.get(opponentMoveHistory.size() - 1)) {
-// move = prevMove;
-// } else {
-// move = !prevMove;
-// }
-
-// prevMove = move;
-// return move;
-// }
-
-// }
+    @Override
+    public String getStrategyName() {
+        return "Simpleton";
+    }
+}

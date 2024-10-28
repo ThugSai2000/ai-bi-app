@@ -1,36 +1,43 @@
-// package GameTheory.Strategies;
+package GameTheory.Strategies;
 
-// public class GeneticMemory extends GeneticStrategy {
+/**
+ * A genetic strategy that considers opponent's previous moves
+ * Uses memory of past interactions to make decisions
+ */
+public class GeneticMemory extends GeneticStrategy {
 
-// public GeneticMemory(double n) {
-// super(n);
-// }
+    /**
+     * Original: Basic constructor with weight
+     * Updated: Added Player parameter to match Strategy base class
+     */
+    public GeneticMemory(double n, Player player) {
+        super(n, player);
+    }
 
-// /**
-// * Make a move probabilistically; i.e. generate a random number between 0 and
-// 1,
-// * and if it is less than this.weight, and if opponentPrevMove is true, then
-// * return true
-// *
-// * @return defect / cooperate depending on the conditions above
-// */
-// @Override
-// public boolean makeMove() {
-// boolean opponentPrevMove = this.opponentMoveHistory.size() > 0
-// ? this.opponentMoveHistory.get(this.opponentMoveHistory.size() - 1)
-// : true;
-// return opponentPrevMove && this.generator.nextDouble() < this.weight;
-// }
+    /**
+     * Original: Used boolean makeMove() for decisions
+     * Updated: Converted to int getStrategy() to match Strategy class
+     * Returns 1 for cooperate, 0 for defect
+     * Logic considers both opponent history and probability weight
+     */
+    @Override
+    public int getStrategy() {
+        boolean opponentPrevMove = this.opponentMoveHistory.size() > 0
+                ? this.opponentMoveHistory.get(this.opponentMoveHistory.size() - 1)
+                : true;
+        return (opponentPrevMove && this.generator.nextDouble() < this.weight) ? 1 : 0;
+    }
 
-// /**
-// * Mutate this genetic strategy by modifying it's weight
-// */
-// @Override
-// public GeneticMemory mutateNew() {
-// boolean pm = generator.nextDouble() > 0.5;
-// double val = generator.nextDouble() * 0.008;
-// double w = pm && (weight + val < 1) ? weight + val : weight - val > 0 ?
-// weight - val : weight;
-// return new GeneticMemory(w);
-// }
-// }
+    /**
+     * Original: Creates new mutated instance
+     * Updated: Added player parameter to constructor call
+     * Mutation rate remains at 0.008 for fine-tuned evolution
+     */
+    @Override
+    public GeneticMemory mutateNew() {
+        boolean pm = generator.nextDouble() > 0.5;
+        double val = generator.nextDouble() * 0.008;
+        double w = pm && (weight + val < 1) ? weight + val : weight - val > 0 ? weight - val : weight;
+        return new GeneticMemory(w, this.getPlayer());
+    }
+}

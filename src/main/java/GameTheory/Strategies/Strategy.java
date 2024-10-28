@@ -89,6 +89,7 @@ public abstract class Strategy {
 	 *
 	 * @param opponentMove the opponent's previous move
 	 */
+
 	public void addOpponentMove(boolean opponentMove) {
 		this.opponentMoveHistory.add(opponentMove);
 	}

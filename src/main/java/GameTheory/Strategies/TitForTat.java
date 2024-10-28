@@ -1,25 +1,22 @@
-// package GameTheory.Strategies;
+package GameTheory.Strategies;
 
-// public class TitForTat extends Strategy {
+public class TitForTat extends Strategy {
 
-// /**
-// * This strategy (Tit-For-Tat) copies the previous move of the opposing
-// player.
-// * This is generally known as a fairly good strategy, as it is simultaneously
-// * nice, forgiving, and revengeful.
-// *
-// * This requires adding opponent move history after each battle
-// */
+    public TitForTat(Player player) {
+        super(player);
+    }
 
-// public TitForTat() {
-// super();
-// }
+    @Override
+    public int getStrategy() {
+        if (opponentMoveHistory.isEmpty()) {
+            return 1; // Cooperate on first move
+        }
+        // Copy opponent's last move: true/1 for cooperate, false/0 for defect
+        return opponentMoveHistory.get(opponentMoveHistory.size() - 1) ? 1 : 0;
+    }
 
-// @Override
-// public boolean makeMove() {
-// if (opponentMoveHistory.size() == 0) {
-// return true;
-// }
-// return opponentMoveHistory.get(opponentMoveHistory.size() - 1);
-// }
-// }
+    @Override
+    public String getStrategyName() {
+        return "TitForTat";
+    }
+}

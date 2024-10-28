@@ -1,40 +1,40 @@
-// package GameTheory.Strategies;
+package GameTheory.Strategies;
 
-// public class Grudger extends Strategy {
+/**
+ * Grudger strategy - Cooperates until opponent defects, then always defects
+ * Also known as "Grim Trigger" or "Spiteful" strategy
+ */
+public class Grudger extends Strategy {
 
-// /**
-// * Strategy from the great Evolution of Trust (https://ncase.me/trust/)
-// *
-// * Player cooperates until the opponent cheats; then they always cheat
-// */
+    private boolean hasDefected = false;
 
-// private boolean opponentCheated;
+    /**
+     * Original: Basic constructor
+     * Updated: Added Player parameter for new contest structure
+     */
+    public Grudger(Player player) {
+        super(player);
+    }
 
-// public Grudger() {
-// super();
-// opponentCheated = false;
-// }
+    /**
+     * Original: Used boolean makeMove()
+     * Updated: Now uses int getStrategy() for contest compatibility
+     * Returns 1 (cooperate) if opponent never defected
+     * Returns 0 (defect) if opponent has ever defected
+     */
+    @Override
+    public int getStrategy() {
+        if (!opponentMoveHistory.isEmpty()) {
+            boolean opponentLastMove = opponentMoveHistory.get(opponentMoveHistory.size() - 1);
+            if (!opponentLastMove) {
+                hasDefected = true;
+            }
+        }
+        return hasDefected ? 0 : 1;
+    }
 
-// /**
-// * If the opponent did not cheat, true else false
-// *
-// * @param opponentMove the opponent's previous move
-// */
-// @Override
-// public void addOpponentMove(boolean opponentMove) {
-// if (!opponentCheated && !opponentMove) {
-// opponentCheated = true;
-// }
-// }
-
-// @Override
-// public void clearStrategy() {
-// super.clearStrategy();
-// opponentCheated = false;
-// }
-
-// @Override
-// public boolean makeMove() {
-// return !opponentCheated;
-// }
-// }
+    @Override
+    public String getStrategyName() {
+        return "Grudger";
+    }
+}

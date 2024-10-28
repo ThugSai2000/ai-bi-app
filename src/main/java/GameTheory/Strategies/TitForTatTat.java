@@ -1,25 +1,43 @@
-// package GameTheory.Strategies;
+package GameTheory.Strategies;
 
-// public class TitForTatTat extends Strategy {
+/**
+ * TitForTatTat strategy - Considers last two moves of opponent
+ * Cooperates if opponent cooperated in both previous moves
+ */
+public class TitForTatTat extends Strategy {
 
-// /**
-// * Strategy from the great Evolution of Trust (https://ncase.me/trust/)
-// *
-// * This strategy (Tit-For-TatTat) will defect if the previous two moves of the
-// * opponent were defections.
-// */
+    /**
+     * Original: Basic constructor
+     * Updated: Added Player parameter for new contest structure
+     */
+    public TitForTatTat(Player player) {
+        super(player);
+    }
 
-// public TitForTatTat() {
-// super();
-// }
+    /**
+     * Original: Used boolean makeMove()
+     * Updated: Now uses int getStrategy() for contest compatibility
+     * Returns 1 (cooperate) if:
+     * - First move
+     * - Second move
+     * - Both previous opponent moves were cooperative
+     * Returns 0 (defect) otherwise
+     */
+    @Override
+    public int getStrategy() {
+        if (opponentMoveHistory.size() < 2) {
+            return 1; // Cooperate for first two moves
+        }
 
-// @Override
-// public boolean makeMove() {
-// if (opponentMoveHistory.size() == 0 || opponentMoveHistory.size() == 1) {
-// return true;
-// }
-// return opponentMoveHistory.get(opponentMoveHistory.size() - 1)
-// && opponentMoveHistory.get(opponentMoveHistory.size() - 2);
-// }
+        // Check last two opponent moves
+        boolean lastMove = opponentMoveHistory.get(opponentMoveHistory.size() - 1);
+        boolean secondLastMove = opponentMoveHistory.get(opponentMoveHistory.size() - 2);
 
-// }
+        return (lastMove && secondLastMove) ? 1 : 0;
+    }
+
+    @Override
+    public String getStrategyName() {
+        return "TitForTatTat";
+    }
+}
