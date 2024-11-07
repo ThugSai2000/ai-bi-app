@@ -13,6 +13,7 @@ import GameTheory.Strategies.Strategy_W;
 import GameTheory.Strategies.Strategy_X;
 import GameTheory.Strategies.Strategy_Y;
 import GameTheory.Strategies.Strategy_Z;
+import GameTheory.Strategies.TitForTat;
 
 import java.util.List;
 
@@ -21,38 +22,93 @@ import static org.junit.Assert.*;
 public class GameTests {
 
 	@Test
-	public void testPlayer1StrategiesVsPlayer2Strategies() {
-		// Define arrays of strategies for Player 1 and Player 2
-		Strategy[] player1Strategies = {
-				new Strategy_X(Strategy.Player.PLAYER1),
-				new Strategy_Y(Strategy.Player.PLAYER1),
-				new Strategy_Z(Strategy.Player.PLAYER1)
-		};
+	public void testStrategy_X_vs_Strategy_G() {
+		Strategy s1 = new Strategy_X(Strategy.Player.PLAYER1);
+		Strategy s2 = new Strategy_G(Strategy.Player.PLAYER2);
+		Game game = new Game(s1, s2);
+		List<Integer> outcomes = game.executeGame(100);
+		assertEquals(1500, (int) outcomes.get(0));
+		assertEquals(400, (int) outcomes.get(1));
+	}
 
-		Strategy[] player2Strategies = {
-				new Strategy_G(Strategy.Player.PLAYER2),
-				new Strategy_M(Strategy.Player.PLAYER2),
-				new Strategy_W(Strategy.Player.PLAYER2)
-		};
+	@Test
+	public void testStrategy_X_vs_Strategy_M() {
+		Strategy s1 = new Strategy_X(Strategy.Player.PLAYER1);
+		Strategy s2 = new Strategy_M(Strategy.Player.PLAYER2);
+		Game game = new Game(s1, s2);
+		List<Integer> outcomes = game.executeGame(100);
+		assertEquals(1500, (int) outcomes.get(0));
+		assertEquals(400, (int) outcomes.get(1));
+	}
 
-		// Test all combinations of Player 1 and Player 2 strategies
-		for (Strategy p1Strategy : player1Strategies) {
-			for (Strategy p2Strategy : player2Strategies) {
-				// Create a new game with the current strategies
-				Game game = new Game(p1Strategy, p2Strategy);
-				// Execute the game for 100 rounds
-				List<Integer> outcomes = game.executeGame(100);
+	@Test
+	public void testStrategy_X_vs_Strategy_W() {
+		Strategy s1 = new Strategy_X(Strategy.Player.PLAYER1);
+		Strategy s2 = new Strategy_W(Strategy.Player.PLAYER2);
+		Game game = new Game(s1, s2);
+		List<Integer> outcomes = game.executeGame(100);
+		assertEquals(1500, (int) outcomes.get(0));
+		assertEquals(400, (int) outcomes.get(1));
+	}
 
-				// Print the results of the game
-				System.out.printf("%s vs %s: Player1 Score = %d, Player2 Score = %d%n",
-						p1Strategy.getStrategyName(), p2Strategy.getStrategyName(),
-						outcomes.get(0), outcomes.get(1));
+	@Test
+	public void testStrategy_Y_vs_Strategy_G() {
+		Strategy s1 = new Strategy_Y(Strategy.Player.PLAYER1);
+		Strategy s2 = new Strategy_G(Strategy.Player.PLAYER2);
+		Game game = new Game(s1, s2);
+		List<Integer> outcomes = game.executeGame(100);
+		assertEquals(400, (int) outcomes.get(0));
+		assertEquals(1500, (int) outcomes.get(1));
+	}
 
-				// Add assertions based on expected outcomes
-				assertTrue("Player1 score should be non-negative", outcomes.get(0) >= 0);
-				assertTrue("Player2 score should be non-negative", outcomes.get(1) >= 0);
-			}
-		}
+	@Test
+	public void testStrategy_Y_vs_Strategy_M() {
+		Strategy s1 = new Strategy_Y(Strategy.Player.PLAYER1);
+		Strategy s2 = new Strategy_M(Strategy.Player.PLAYER2);
+		Game game = new Game(s1, s2);
+		List<Integer> outcomes = game.executeGame(100);
+		assertEquals(400, (int) outcomes.get(0));
+		assertEquals(1500, (int) outcomes.get(1));
+	}
+
+	@Test
+	public void testStrategy_Y_vs_Strategy_W() {
+		Strategy s1 = new Strategy_Y(Strategy.Player.PLAYER1);
+		Strategy s2 = new Strategy_W(Strategy.Player.PLAYER2);
+		Game game = new Game(s1, s2);
+		List<Integer> outcomes = game.executeGame(100);
+		assertEquals(400, (int) outcomes.get(0));
+		assertEquals(1500, (int) outcomes.get(1));
+	}
+
+	@Test
+	public void testStrategy_Z_vs_Strategy_G() {
+		Strategy s1 = new Strategy_Z(Strategy.Player.PLAYER1);
+		Strategy s2 = new Strategy_G(Strategy.Player.PLAYER2);
+		Game game = new Game(s1, s2);
+		List<Integer> outcomes = game.executeGame(100);
+		assertEquals(400, (int) outcomes.get(0));
+		assertEquals(1500, (int) outcomes.get(1));
+	}
+
+	@Test
+	public void testStrategy_Z_vs_Strategy_M() {
+		Strategy s1 = new Strategy_Z(Strategy.Player.PLAYER1);
+		Strategy s2 = new Strategy_M(Strategy.Player.PLAYER2);
+		Game game = new Game(s1, s2);
+		List<Integer> outcomes = game.executeGame(100);
+		assertEquals(400, (int) outcomes.get(0));
+		assertEquals(1500, (int) outcomes.get(1));
+	}
+
+	@Test
+	public void testStrategy_Z_vs_Strategy_W() {
+		Strategy s1 = new Strategy_Z(Strategy.Player.PLAYER1);
+		Strategy s2 = new Strategy_W(Strategy.Player.PLAYER2);
+		Game game = new Game(s1, s2);
+		List<Integer> outcomes = game.executeGame(100);
+		assertEquals(400, (int) outcomes.get(0));
+		assertEquals(1500, (int) outcomes.get(1));
 	}
 
 	@Test
@@ -83,6 +139,102 @@ public class GameTests {
 		assertTrue("Player2 score should be non-negative", outcomes.get(1) >= 0);
 	}
 
+	// TitForTat vs Player 1 Strategies
+	@Test
+	public void testTitForTat_vs_Strategy_X() {
+		Strategy s1 = new TitForTat(Strategy.Player.PLAYER1);
+		Strategy s2 = new Strategy_X(Strategy.Player.PLAYER2);
+		Game war = new Game(s1, s2);
+		List<Integer> warOutcomes = war.executeGame(100);
+		assertEquals(300, (int) warOutcomes.get(0)); // 3 * 100 rounds
+		assertEquals(1300, (int) warOutcomes.get(1)); // 13 * 100 rounds
+	}
+
+	@Test
+	public void testTitForTat_vs_Strategy_Y() {
+		Strategy s1 = new TitForTat(Strategy.Player.PLAYER1);
+		Strategy s2 = new Strategy_Y(Strategy.Player.PLAYER2);
+		Game war = new Game(s1, s2);
+		List<Integer> warOutcomes = war.executeGame(100);
+		assertEquals(1500, (int) warOutcomes.get(0)); // 15 * 100 rounds
+		assertEquals(400, (int) warOutcomes.get(1)); // 4 * 100 rounds
+	}
+
+	@Test
+	public void testTitForTat_vs_Strategy_Z() {
+		Strategy s1 = new TitForTat(Strategy.Player.PLAYER1);
+		Strategy s2 = new Strategy_Z(Strategy.Player.PLAYER2);
+		Game war = new Game(s1, s2);
+		List<Integer> warOutcomes = war.executeGame(100);
+		assertEquals(1500, (int) warOutcomes.get(0)); // 15 * 100 rounds
+		assertEquals(400, (int) warOutcomes.get(1)); // 4 * 100 rounds
+	}
+
+	// TitForTat _vs_ Player 2 Strategies
+	@Test
+	public void testTitForTat_vs_Strategy_G() {
+		Strategy s1 = new TitForTat(Strategy.Player.PLAYER1);
+		Strategy s2 = new Strategy_G(Strategy.Player.PLAYER2);
+		Game war = new Game(s1, s2);
+		List<Integer> warOutcomes = war.executeGame(100);
+		assertEquals(1500, (int) warOutcomes.get(0)); // 15 * 100 rounds
+		assertEquals(400, (int) warOutcomes.get(1)); // 4 * 100 rounds
+	}
+
+	@Test
+	public void testTitForTat_vs_Strategy_M() {
+		Strategy s1 = new TitForTat(Strategy.Player.PLAYER1);
+		Strategy s2 = new Strategy_M(Strategy.Player.PLAYER2);
+		Game war = new Game(s1, s2);
+		List<Integer> warOutcomes = war.executeGame(100);
+		assertEquals(1500, (int) warOutcomes.get(0)); // 15 * 100 rounds
+		assertEquals(400, (int) warOutcomes.get(1)); // 4 * 100 rounds
+	}
+
+	@Test
+	public void testTitForTat_vs_Strategy_W() {
+		Strategy s1 = new TitForTat(Strategy.Player.PLAYER1);
+		Strategy s2 = new Strategy_W(Strategy.Player.PLAYER2);
+		Game war = new Game(s1, s2);
+		List<Integer> warOutcomes = war.executeGame(100);
+		assertEquals(1500, (int) warOutcomes.get(0)); // 15 * 100 rounds
+		assertEquals(400, (int) warOutcomes.get(1)); // 4 * 100 rounds
+	}
+
+	// @Test
+	// public void testPlayer1Strategies_vs_Player2Strategies() {
+	// // Define arrays of strategies for Player 1 and Player 2
+	// Strategy[] player1Strategies = {
+	// new Strategy_X(Strategy.Player.PLAYER1),
+	// new Strategy_Y(Strategy.Player.PLAYER1),
+	// new Strategy_Z(Strategy.Player.PLAYER1)
+	// };
+
+	// Strategy[] player2Strategies = {
+	// new Strategy_G(Strategy.Player.PLAYER2),
+	// new Strategy_M(Strategy.Player.PLAYER2),
+	// new Strategy_W(Strategy.Player.PLAYER2)
+	// };
+
+	// // Test all combinations of Player 1 and Player 2 strategies
+	// for (Strategy p1Strategy : player1Strategies) {
+	// for (Strategy p2Strategy : player2Strategies) {
+	// // Create a new game with the current strategies
+	// Game game = new Game(p1Strategy, p2Strategy);
+	// // Execute the game for 100 rounds
+	// List<Integer> outcomes = game.executeGame(100);
+
+	// // Print the results of the game
+	// System.out.printf("%s vs %s: Player1 Score = %d, Player2 Score = %d%n",
+	// p1Strategy.getStrategyName(), p2Strategy.getStrategyName(),
+	// outcomes.get(0), outcomes.get(1));
+
+	// // Add assertions based on expected outcomes
+	// assertTrue("Player1 score should be non-negative", outcomes.get(0) >= 0);
+	// assertTrue("Player2 score should be non-negative", outcomes.get(1) >= 0);
+	// }
+	// }
+	// }
 	// @Test
 	// public void testCooperateDefect() {
 	// Strategy s1 = new AlwaysCooperate();
