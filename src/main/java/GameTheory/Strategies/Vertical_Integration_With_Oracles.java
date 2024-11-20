@@ -1,7 +1,7 @@
 package GameTheory.Strategies;
 
-public class Strategy_Z extends Strategy {
-    public Strategy_Z(Player player) {
+public class Vertical_Integration_With_Oracles extends Strategy {
+    public Vertical_Integration_With_Oracles(Player player) {
         super(player);
     }
 

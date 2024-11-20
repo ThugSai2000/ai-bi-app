@@ -24,12 +24,12 @@ public class TournamentTest {
         // Old version used fixed truth map with predefined scores
         // New version uses dynamic strategies with Player assignments
         // Initialize diverse strategies with player assignments
-        Strategy s1 = new Strategy_X(Player.PLAYER1); // Added new strategies
-        Strategy s2 = new Strategy_Y(Player.PLAYER2); // with Player assignments
-        Strategy s3 = new Strategy_Z(Player.PLAYER1); // replacing AlwaysCooperate/Defect
-        Strategy s4 = new Strategy_G(Player.PLAYER2);
-        Strategy s5 = new Strategy_M(Player.PLAYER1);
-        Strategy s6 = new Strategy_W(Player.PLAYER2);
+        Strategy s1 = new AI_Powered_Autonomus_Cloud_DB(Player.PLAYER1); // Added new strategies
+        Strategy s2 = new Focus_On_High_Performance(Player.PLAYER2); // with Player assignments
+        Strategy s3 = new Vertical_Integration_With_Oracles(Player.PLAYER1); // replacing AlwaysCooperate/Defect
+        Strategy s4 = new Integrated_AI_ML_Services(Player.PLAYER2);
+        Strategy s5 = new Emphasize_Flexibility_Compatibility(Player.PLAYER1);
+        Strategy s6 = new Azure_Hybrid_Cloud_Solutions(Player.PLAYER2);
         Strategy s7 = new Simpleton(Player.PLAYER1);
         Strategy s8 = new Grudger(Player.PLAYER2);
         Strategy s9 = new TitForTat(Player.PLAYER1);
@@ -70,12 +70,12 @@ public class TournamentTest {
     @Test
     public void executeRepeatedTournamentRoundsTest() {
         // Initialize strategy set
-        Strategy s1 = new Strategy_X(Player.PLAYER1);
-        Strategy s2 = new Strategy_Y(Player.PLAYER2);
-        Strategy s3 = new Strategy_Z(Player.PLAYER1);
-        Strategy s4 = new Strategy_G(Player.PLAYER2);
-        Strategy s5 = new Strategy_M(Player.PLAYER1);
-        Strategy s6 = new Strategy_W(Player.PLAYER2);
+        Strategy s1 = new AI_Powered_Autonomus_Cloud_DB(Player.PLAYER1);
+        Strategy s2 = new Focus_On_High_Performance(Player.PLAYER2);
+        Strategy s3 = new Vertical_Integration_With_Oracles(Player.PLAYER1);
+        Strategy s4 = new Integrated_AI_ML_Services(Player.PLAYER2);
+        Strategy s5 = new Emphasize_Flexibility_Compatibility(Player.PLAYER1);
+        Strategy s6 = new Azure_Hybrid_Cloud_Solutions(Player.PLAYER2);
         Strategy s7 = new Simpleton(Player.PLAYER1);
         Strategy s8 = new Grudger(Player.PLAYER2);
         Strategy s9 = new TitForTat(Player.PLAYER1);
@@ -101,8 +101,8 @@ public class TournamentTest {
     public void testSortingSet() {
         // Create test data
         HashMap<Strategy, Integer> data = new HashMap<>();
-        data.put(new Strategy_X(Player.PLAYER1), 1);
-        data.put(new Strategy_Y(Player.PLAYER2), 2);
+        data.put(new AI_Powered_Autonomus_Cloud_DB(Player.PLAYER1), 1);
+        data.put(new Focus_On_High_Performance(Player.PLAYER2), 2);
         data.put(new Grudger(Player.PLAYER1), 3);
         data.put(new TitForTat(Player.PLAYER2), 4);
 

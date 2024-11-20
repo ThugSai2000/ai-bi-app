@@ -1,7 +1,7 @@
 package GameTheory.Strategies;
 
-public class Strategy_W extends Strategy {
-    public Strategy_W(Player player) {
+public class Azure_Hybrid_Cloud_Solutions extends Strategy {
+    public Azure_Hybrid_Cloud_Solutions(Player player) {
         super(player);
     }
 

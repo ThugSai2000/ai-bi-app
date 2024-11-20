@@ -1,7 +1,7 @@
 package GameTheory.Strategies;
 
-public class Strategy_Y extends Strategy {
-    public Strategy_Y(Player player) {
+public class Focus_On_High_Performance extends Strategy {
+    public Focus_On_High_Performance(Player player) {
         super(player);
     }
 

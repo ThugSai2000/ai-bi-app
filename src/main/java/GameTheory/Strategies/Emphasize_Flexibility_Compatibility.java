@@ -1,7 +1,7 @@
 package GameTheory.Strategies;
 
-public class Strategy_M extends Strategy {
-    public Strategy_M(Player player) {
+public class Emphasize_Flexibility_Compatibility extends Strategy {
+    public Emphasize_Flexibility_Compatibility(Player player) {
         super(player);
     }
 

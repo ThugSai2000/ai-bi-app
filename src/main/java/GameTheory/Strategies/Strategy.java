@@ -36,15 +36,15 @@ public abstract class Strategy {
 		strategyMap = new HashMap<>();
 		// Register Player 1 strategies here
 		strategyMap.put(Player.PLAYER1, new ArrayList<>());
-		strategyMap.get(Player.PLAYER1).add(Strategy_X.class);
-		strategyMap.get(Player.PLAYER1).add(Strategy_Y.class);
-		strategyMap.get(Player.PLAYER1).add(Strategy_Z.class);
+		strategyMap.get(Player.PLAYER1).add(AI_Powered_Autonomus_Cloud_DB.class);
+		strategyMap.get(Player.PLAYER1).add(Focus_On_High_Performance.class);
+		strategyMap.get(Player.PLAYER1).add(Vertical_Integration_With_Oracles.class);
 
 		// Register Player 2 strategies here
 		strategyMap.put(Player.PLAYER2, new ArrayList<>());
-		strategyMap.get(Player.PLAYER2).add(Strategy_G.class);
-		strategyMap.get(Player.PLAYER2).add(Strategy_M.class);
-		strategyMap.get(Player.PLAYER2).add(Strategy_W.class);
+		strategyMap.get(Player.PLAYER2).add(Integrated_AI_ML_Services.class);
+		strategyMap.get(Player.PLAYER2).add(Emphasize_Flexibility_Compatibility.class);
+		strategyMap.get(Player.PLAYER2).add(Azure_Hybrid_Cloud_Solutions.class);
 	}
 
 	public Strategy(Player player) throws IllegalArgumentException {

@@ -1,7 +1,7 @@
 package GameTheory.Strategies;
 
-public class Strategy_X extends Strategy {
-    public Strategy_X(Player player) {
+public class AI_Powered_Autonomus_Cloud_DB extends Strategy {
+    public AI_Powered_Autonomus_Cloud_DB(Player player) {
         super(player);
     }
 

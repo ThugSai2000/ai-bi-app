@@ -7,12 +7,12 @@ package GameTheory;
 import org.junit.Test;
 
 import GameTheory.Strategies.Strategy;
-import GameTheory.Strategies.Strategy_G;
-import GameTheory.Strategies.Strategy_M;
-import GameTheory.Strategies.Strategy_W;
-import GameTheory.Strategies.Strategy_X;
-import GameTheory.Strategies.Strategy_Y;
-import GameTheory.Strategies.Strategy_Z;
+import GameTheory.Strategies.Integrated_AI_ML_Services;
+import GameTheory.Strategies.Emphasize_Flexibility_Compatibility;
+import GameTheory.Strategies.Azure_Hybrid_Cloud_Solutions;
+import GameTheory.Strategies.AI_Powered_Autonomus_Cloud_DB;
+import GameTheory.Strategies.Focus_On_High_Performance;
+import GameTheory.Strategies.Vertical_Integration_With_Oracles;
 import GameTheory.Strategies.TitForTat;
 
 import java.util.List;
@@ -22,9 +22,9 @@ import static org.junit.Assert.*;
 public class GameTests {
 
 	@Test
-	public void testStrategy_X_vs_Strategy_G() {
-		Strategy s1 = new Strategy_X(Strategy.Player.PLAYER1);
-		Strategy s2 = new Strategy_G(Strategy.Player.PLAYER2);
+	public void test_AI_Powered_Autonomus_Cloud_DB_vs_Integrated_AI_ML_Services() {
+		Strategy s1 = new AI_Powered_Autonomus_Cloud_DB(Strategy.Player.PLAYER1);
+		Strategy s2 = new Integrated_AI_ML_Services(Strategy.Player.PLAYER2);
 		Game game = new Game(s1, s2);
 		List<Integer> outcomes = game.executeGame(100);
 		assertEquals(1500, (int) outcomes.get(0));
@@ -32,9 +32,9 @@ public class GameTests {
 	}
 
 	@Test
-	public void testStrategy_X_vs_Strategy_M() {
-		Strategy s1 = new Strategy_X(Strategy.Player.PLAYER1);
-		Strategy s2 = new Strategy_M(Strategy.Player.PLAYER2);
+	public void test_AI_Powered_Autonomus_Cloud_DB_vs_Emphasize_Flexibility_Compatibility() {
+		Strategy s1 = new AI_Powered_Autonomus_Cloud_DB(Strategy.Player.PLAYER1);
+		Strategy s2 = new Emphasize_Flexibility_Compatibility(Strategy.Player.PLAYER2);
 		Game game = new Game(s1, s2);
 		List<Integer> outcomes = game.executeGame(100);
 		assertEquals(1500, (int) outcomes.get(0));
@@ -42,9 +42,9 @@ public class GameTests {
 	}
 
 	@Test
-	public void testStrategy_X_vs_Strategy_W() {
-		Strategy s1 = new Strategy_X(Strategy.Player.PLAYER1);
-		Strategy s2 = new Strategy_W(Strategy.Player.PLAYER2);
+	public void test_AI_Powered_Autonomus_Cloud_DB_vs_Azure_Hybrid_Cloud_Solutions() {
+		Strategy s1 = new AI_Powered_Autonomus_Cloud_DB(Strategy.Player.PLAYER1);
+		Strategy s2 = new Azure_Hybrid_Cloud_Solutions(Strategy.Player.PLAYER2);
 		Game game = new Game(s1, s2);
 		List<Integer> outcomes = game.executeGame(100);
 		assertEquals(1500, (int) outcomes.get(0));
@@ -52,9 +52,9 @@ public class GameTests {
 	}
 
 	@Test
-	public void testStrategy_Y_vs_Strategy_G() {
-		Strategy s1 = new Strategy_Y(Strategy.Player.PLAYER1);
-		Strategy s2 = new Strategy_G(Strategy.Player.PLAYER2);
+	public void test_Focus_On_High_Performance_vs_Integrated_AI_ML_Services() {
+		Strategy s1 = new Focus_On_High_Performance(Strategy.Player.PLAYER1);
+		Strategy s2 = new Integrated_AI_ML_Services(Strategy.Player.PLAYER2);
 		Game game = new Game(s1, s2);
 		List<Integer> outcomes = game.executeGame(100);
 		assertEquals(400, (int) outcomes.get(0));
@@ -62,9 +62,9 @@ public class GameTests {
 	}
 
 	@Test
-	public void testStrategy_Y_vs_Strategy_M() {
-		Strategy s1 = new Strategy_Y(Strategy.Player.PLAYER1);
-		Strategy s2 = new Strategy_M(Strategy.Player.PLAYER2);
+	public void test_Focus_On_High_Performance_vs_Emphasize_Flexibility_Compatibility() {
+		Strategy s1 = new Focus_On_High_Performance(Strategy.Player.PLAYER1);
+		Strategy s2 = new Emphasize_Flexibility_Compatibility(Strategy.Player.PLAYER2);
 		Game game = new Game(s1, s2);
 		List<Integer> outcomes = game.executeGame(100);
 		assertEquals(400, (int) outcomes.get(0));
@@ -72,9 +72,9 @@ public class GameTests {
 	}
 
 	@Test
-	public void testStrategy_Y_vs_Strategy_W() {
-		Strategy s1 = new Strategy_Y(Strategy.Player.PLAYER1);
-		Strategy s2 = new Strategy_W(Strategy.Player.PLAYER2);
+	public void test_Focus_On_High_Performance_vs_Azure_Hybrid_Cloud_Solutions() {
+		Strategy s1 = new Focus_On_High_Performance(Strategy.Player.PLAYER1);
+		Strategy s2 = new Azure_Hybrid_Cloud_Solutions(Strategy.Player.PLAYER2);
 		Game game = new Game(s1, s2);
 		List<Integer> outcomes = game.executeGame(100);
 		assertEquals(400, (int) outcomes.get(0));
@@ -82,9 +82,9 @@ public class GameTests {
 	}
 
 	@Test
-	public void testStrategy_Z_vs_Strategy_G() {
-		Strategy s1 = new Strategy_Z(Strategy.Player.PLAYER1);
-		Strategy s2 = new Strategy_G(Strategy.Player.PLAYER2);
+	public void test_Vertical_Integration_With_Oracles_vs_Integrated_AI_ML_Services() {
+		Strategy s1 = new Vertical_Integration_With_Oracles(Strategy.Player.PLAYER1);
+		Strategy s2 = new Integrated_AI_ML_Services(Strategy.Player.PLAYER2);
 		Game game = new Game(s1, s2);
 		List<Integer> outcomes = game.executeGame(100);
 		assertEquals(400, (int) outcomes.get(0));
@@ -92,9 +92,9 @@ public class GameTests {
 	}
 
 	@Test
-	public void testStrategy_Z_vs_Strategy_M() {
-		Strategy s1 = new Strategy_Z(Strategy.Player.PLAYER1);
-		Strategy s2 = new Strategy_M(Strategy.Player.PLAYER2);
+	public void test_Vertical_Integration_With_Oracles_Z_vs_Emphasize_Flexibility_Compatibility() {
+		Strategy s1 = new Vertical_Integration_With_Oracles(Strategy.Player.PLAYER1);
+		Strategy s2 = new Emphasize_Flexibility_Compatibility(Strategy.Player.PLAYER2);
 		Game game = new Game(s1, s2);
 		List<Integer> outcomes = game.executeGame(100);
 		assertEquals(400, (int) outcomes.get(0));
@@ -102,9 +102,9 @@ public class GameTests {
 	}
 
 	@Test
-	public void testStrategy_Z_vs_Strategy_W() {
-		Strategy s1 = new Strategy_Z(Strategy.Player.PLAYER1);
-		Strategy s2 = new Strategy_W(Strategy.Player.PLAYER2);
+	public void test_Vertical_Integration_With_Oracles_vs_Azure_Hybrid_Cloud_Solutions() {
+		Strategy s1 = new Vertical_Integration_With_Oracles(Strategy.Player.PLAYER1);
+		Strategy s2 = new Azure_Hybrid_Cloud_Solutions(Strategy.Player.PLAYER2);
 		Game game = new Game(s1, s2);
 		List<Integer> outcomes = game.executeGame(100);
 		assertEquals(400, (int) outcomes.get(0));
@@ -119,10 +119,12 @@ public class GameTests {
 
 		// Assert that Player 1's strategy is one of X, Y, or Z
 		assertTrue("Player1 strategy should be X, Y, or Z",
-				player1 instanceof Strategy_X || player1 instanceof Strategy_Y || player1 instanceof Strategy_Z);
+				player1 instanceof AI_Powered_Autonomus_Cloud_DB || player1 instanceof Focus_On_High_Performance
+						|| player1 instanceof Vertical_Integration_With_Oracles);
 		// Assert that Player 2's strategy is one of G, M, or W
 		assertTrue("Player2 strategy should be G, M, or W",
-				player2 instanceof Strategy_G || player2 instanceof Strategy_M || player2 instanceof Strategy_W);
+				player2 instanceof Integrated_AI_ML_Services || player2 instanceof Emphasize_Flexibility_Compatibility
+						|| player2 instanceof Azure_Hybrid_Cloud_Solutions);
 
 		// Create a new game with the random strategies
 		Game game = new Game(player1, player2);
@@ -141,9 +143,9 @@ public class GameTests {
 
 	// TitForTat vs Player 1 Strategies
 	@Test
-	public void testTitForTat_vs_Strategy_X() {
+	public void testTitForTat_vs_AI_Powered_Autonomus_Cloud_DB() {
 		Strategy s1 = new TitForTat(Strategy.Player.PLAYER1);
-		Strategy s2 = new Strategy_X(Strategy.Player.PLAYER2);
+		Strategy s2 = new AI_Powered_Autonomus_Cloud_DB(Strategy.Player.PLAYER2);
 		Game war = new Game(s1, s2);
 		List<Integer> warOutcomes = war.executeGame(100);
 		assertEquals(300, (int) warOutcomes.get(0)); // 3 * 100 rounds
@@ -151,9 +153,9 @@ public class GameTests {
 	}
 
 	@Test
-	public void testTitForTat_vs_Strategy_Y() {
+	public void testTitForTat_vs_Focus_On_High_Performance() {
 		Strategy s1 = new TitForTat(Strategy.Player.PLAYER1);
-		Strategy s2 = new Strategy_Y(Strategy.Player.PLAYER2);
+		Strategy s2 = new Focus_On_High_Performance(Strategy.Player.PLAYER2);
 		Game war = new Game(s1, s2);
 		List<Integer> warOutcomes = war.executeGame(100);
 		assertEquals(1500, (int) warOutcomes.get(0)); // 15 * 100 rounds
@@ -161,9 +163,9 @@ public class GameTests {
 	}
 
 	@Test
-	public void testTitForTat_vs_Strategy_Z() {
+	public void testTitForTat_vs_Vertical_Integration_With_Oracles() {
 		Strategy s1 = new TitForTat(Strategy.Player.PLAYER1);
-		Strategy s2 = new Strategy_Z(Strategy.Player.PLAYER2);
+		Strategy s2 = new Vertical_Integration_With_Oracles(Strategy.Player.PLAYER2);
 		Game war = new Game(s1, s2);
 		List<Integer> warOutcomes = war.executeGame(100);
 		assertEquals(1500, (int) warOutcomes.get(0)); // 15 * 100 rounds
@@ -172,9 +174,9 @@ public class GameTests {
 
 	// TitForTat _vs_ Player 2 Strategies
 	@Test
-	public void testTitForTat_vs_Strategy_G() {
+	public void testTitForTat_vs_Integrated_AI_ML_Services() {
 		Strategy s1 = new TitForTat(Strategy.Player.PLAYER1);
-		Strategy s2 = new Strategy_G(Strategy.Player.PLAYER2);
+		Strategy s2 = new Integrated_AI_ML_Services(Strategy.Player.PLAYER2);
 		Game war = new Game(s1, s2);
 		List<Integer> warOutcomes = war.executeGame(100);
 		assertEquals(1500, (int) warOutcomes.get(0)); // 15 * 100 rounds
@@ -182,9 +184,9 @@ public class GameTests {
 	}
 
 	@Test
-	public void testTitForTat_vs_Strategy_M() {
+	public void testTitForTat_vs_Emphasize_Flexibility_Compatibility() {
 		Strategy s1 = new TitForTat(Strategy.Player.PLAYER1);
-		Strategy s2 = new Strategy_M(Strategy.Player.PLAYER2);
+		Strategy s2 = new Emphasize_Flexibility_Compatibility(Strategy.Player.PLAYER2);
 		Game war = new Game(s1, s2);
 		List<Integer> warOutcomes = war.executeGame(100);
 		assertEquals(1500, (int) warOutcomes.get(0)); // 15 * 100 rounds
@@ -192,9 +194,9 @@ public class GameTests {
 	}
 
 	@Test
-	public void testTitForTat_vs_Strategy_W() {
+	public void testTitForTat_vs_Azure_Hybrid_Cloud_Solutions() {
 		Strategy s1 = new TitForTat(Strategy.Player.PLAYER1);
-		Strategy s2 = new Strategy_W(Strategy.Player.PLAYER2);
+		Strategy s2 = new Azure_Hybrid_Cloud_Solutions(Strategy.Player.PLAYER2);
 		Game war = new Game(s1, s2);
 		List<Integer> warOutcomes = war.executeGame(100);
 		assertEquals(1500, (int) warOutcomes.get(0)); // 15 * 100 rounds

@@ -1,7 +1,7 @@
 package GameTheory.Strategies;
 
-public class Strategy_G extends Strategy {
-    public Strategy_G(Player player) {
+public class Integrated_AI_ML_Services extends Strategy {
+    public Integrated_AI_ML_Services(Player player) {
         super(player);
     }
 
